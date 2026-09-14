@@ -1,0 +1,86 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+  "productName": "WorkYunxi",
+  "version": "0.1.0",
+  "identifier": "com.workyunxi.app",
+  "build": {
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:5173",
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "WorkYunxi",
+        "width": 1280,
+        "height": 800,
+        "minWidth": 960,
+        "minHeight": 600,
+        "resizable": true,
+        "fullscreen": false
+      }
+    ],
+    "security": {
+      "csp": null
+    },
+    "macOSPrivateApi": true
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "category": "DeveloperTool",
+    "shortDescription": "Hermes Agent 桌面工作台",
+    "longDescription": "WorkYunxi 是基于 Hermes Agent 的本地优先多 Agent 桌面工作台，提供聊天、工作流编排、技能管理、MCP、定时任务等能力。",
+    "copyright": "© 2026 WorkYunxi",
+    "publisher": "WorkYunxi",
+    "macOS": {
+      "entitlements": "../entitlements.plist",
+      "entitlementsBeta": "../entitlements.plist",
+      "providerShortName": null,
+      "frameworks": []
+    },
+    "windows": {
+      "webviewInstallMode": {
+        "type": "embedBootstrapper",
+        "silent": true
+      },
+      "wix": {
+        "language": "zh-CN",
+        "template": null
+      },
+      "nsis": {
+        "installMode": "currentUser",
+        "languages": ["SimpChinese"],
+        "displayLanguageSelector": false
+      }
+    },
+    "linux": {
+      "deb": {
+        "depends": ["libwebkit2gtk-4.1-0", "libgtk-3-0", "libayatana-appindicator3-1"]
+      },
+      "appimage": {
+        "bundleMediaFramework": true
+      }
+    }
+  },
+  "plugins": {
+    "updater": {
+      "active": true,
+      "endpoints": [
+        "https://raw.githubusercontent.com/WorkYunxi/WorkYunxi/main/updater/latest.json"
+      ],
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IENBQ0FFNkRFQjM1NUE3OQpSV1I1V2pYcmJhNnNEUHdRU25Ycjk3Q0JRRVVhdktDRFJDTGFZK285UEpJeURLYjhDQ3F3d2haTQo=",
+      "windows": {
+        "installMode": "passive"
+      }
+    }
+  }
+}
